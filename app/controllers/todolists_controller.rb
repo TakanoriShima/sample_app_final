@@ -9,14 +9,14 @@ class TodolistsController < ApplicationController
     # Viewへ渡すためのインスタンス変数に空のモデルオブジェクトを生成する。
     @list = List.new
   end
-  # ---- ここからコードを書きましょう ---- #
+
   def create
-    # １. データを新規登録するためのインスタンス作成
-    list = List.new(list_params)
-    # ２. データをデータベースに保存するためのsaveメソッド実行
-    list.save
-    # ３. 詳細画面へリダイレクト
-    redirect_to todolist_path(list.id)
+    @list = List.new(list_params)
+    if @list.save
+      redirect_to todolist_path(@list.id)
+    else
+      render :new, status: :unprocessable_entity
+    end
   end
   
   def edit
