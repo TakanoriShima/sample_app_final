@@ -75,3 +75,8 @@ end
 gem 'activestorage-validator'
 
 gem 'pg', group: :production
+
+gem "aws-sdk-s3", require: false #追記
+gem 'net-imap'
+gem 'net-pop'
+gem 'net-smtp'
